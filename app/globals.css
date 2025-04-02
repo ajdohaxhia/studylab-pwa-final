@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base theme */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Animation durations */
+    --animation-duration-fast: 150ms;
+    --animation-duration-normal: 300ms;
+    --animation-duration-slow: 500ms;
+
+    /* Custom themes */
+    --custom-purple-primary: 262.1 83.3% 57.8%;
+    --custom-purple-secondary: 260 60% 96.1%;
+    --custom-purple-accent: 262.1 83.3% 57.8%;
+    --custom-purple-background: 0 0% 100%;
+    --custom-purple-foreground: 224 71.4% 4.1%;
+
+    --custom-green-primary: 142.1 76.2% 36.3%;
+    --custom-green-secondary: 140 60% 96.1%;
+    --custom-green-accent: 142.1 76.2% 36.3%;
+    --custom-green-background: 0 0% 100%;
+    --custom-green-foreground: 220 14.3% 95.9%;
+
+    --custom-orange-primary: 24.6 95% 53.1%;
+    --custom-orange-secondary: 30 60% 96.1%;
+    --custom-orange-accent: 24.6 95% 53.1%;
+    --custom-orange-background: 0 0% 100%;
+    --custom-orange-foreground: 20 14.3% 4.1%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  /* Purple theme */
+  [data-theme="purple"] {
+    --primary: var(--custom-purple-primary);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--custom-purple-secondary);
+    --secondary-foreground: 224 71.4% 4.1%;
+    --accent: var(--custom-purple-accent);
+    --accent-foreground: 0 0% 100%;
+    --ring: var(--custom-purple-primary);
+  }
+
+  /* Green theme */
+  [data-theme="green"] {
+    --primary: var(--custom-green-primary);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--custom-green-secondary);
+    --secondary-foreground: 220 14.3% 4.1%;
+    --accent: var(--custom-green-accent);
+    --accent-foreground: 0 0% 100%;
+    --ring: var(--custom-green-primary);
+  }
+
+  /* Orange theme */
+  [data-theme="orange"] {
+    --primary: var(--custom-orange-primary);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--custom-orange-secondary);
+    --secondary-foreground: 20 14.3% 4.1%;
+    --accent: var(--custom-orange-accent);
+    --accent-foreground: 0 0% 100%;
+    --ring: var(--custom-orange-primary);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    transition: background-color var(--animation-duration-normal) ease-in-out, color var(--animation-duration-normal)
+      ease-in-out;
+  }
+
+  /* Smooth transitions for theme changes */
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  .card,
+  .badge,
+  .alert,
+  .toast {
+    transition:
+      background-color var(--animation-duration-normal) ease-in-out,
+      color var(--animation-duration-normal) ease-in-out,
+      border-color var(--animation-duration-normal) ease-in-out,
+      box-shadow var(--animation-duration-normal) ease-in-out,
+      transform var(--animation-duration-fast) ease-in-out;
+  }
+
+  /* Hover animations */
+  .hover-scale {
+    transition: transform var(--animation-duration-fast) ease-in-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Button click animation */
+  .btn-click {
+    transition: transform var(--animation-duration-fast) ease-in-out;
+  }
+
+  .btn-click:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Flip card animation */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--animation-duration-normal) ease-in-out, transform var(--animation-duration-normal)
+    ease-in-out;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity var(--animation-duration-normal) ease-in-out, transform var(--animation-duration-normal)
+    ease-in-out;
+}
+
+/* PWA specific styles */
+@media (display-mode: standalone) {
+  /* Add styles specific to when the app is installed as a PWA */
+  body {
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Offline indicator */
+.offline-indicator {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  z-index: 50;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn var(--animation-duration-normal) ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fadeIn var(--animation-duration-normal) ease-in-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--animation-duration-normal) ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideInFromRight var(--animation-duration-normal) ease-in-out;
+}
+
